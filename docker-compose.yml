@@ -13,6 +13,9 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
+    networks:
+      - wordpress_net
+
   wordpress:
     image: wordpress:latest
     container_name: wordpress_app
@@ -33,6 +36,15 @@ services:
     depends_on:
       - db
 
+    networks:
+      - wordpress_net
+
+#volumenes
 volumes:
   db_data:
   wp_data:
+
+#red personalizada
+networks:
+  wordpress_net:
+    driver: bridge
